@@ -28,7 +28,7 @@ if [ ! "$(ls -A /data/db1)" ]; then
     mkdir /data/db2
     mkdir /data/db3
 
-    mongod --smallfiles --dbpath /data/db1 &
+    mongod --dbpath /data/db1 &
     MONGO_PID=$!
 
     waitForMongo 27017
@@ -49,11 +49,11 @@ chmod 600 /var/mongo_keyfile
 
 echo "STARTING CLUSTER"
 
-mongod --port 27003 --smallfiles --dbpath /data/db3 --auth --replSet rs0 --keyFile /var/mongo_keyfile  &
+mongod --port 27003 --dbpath /data/db3 --auth --replSet rs0 --keyFile /var/mongo_keyfile --bind_ip=::,0.0.0.0  &
 DB3_PID=$!
-mongod --port 27002 --smallfiles --dbpath /data/db2 --auth --replSet rs0 --keyFile /var/mongo_keyfile  &
+mongod --port 27002 --dbpath /data/db2 --auth --replSet rs0 --keyFile /var/mongo_keyfile --bind_ip=::,0.0.0.0  &
 DB2_PID=$!
-mongod --port 27001 --smallfiles --dbpath /data/db1 --auth --replSet rs0 --keyFile /var/mongo_keyfile  &
+mongod --port 27001 --dbpath /data/db1 --auth --replSet rs0 --keyFile /var/mongo_keyfile --bind_ip=::,0.0.0.0  &
 DB1_PID=$!
 
 waitForMongo 27001 $USERNAME $PASSWORD
